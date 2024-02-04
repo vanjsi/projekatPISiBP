@@ -4,10 +4,11 @@ const User=require("../models/User")
 const bcrypt=require('bcrypt')
 const Post=require("../models/Post")
 const Comment=require("../models/Comment")
+const verifyToken = require("../verifyToken")
 
 
 //CREATE
-router.post("/create",async (req,res)=>{
+router.post("/create",verifyToken, async (req,res)=>{
     try{
         const newPost=new Post(req.body)
         const savedPost=await newPost.save()
@@ -23,7 +24,7 @@ router.post("/create",async (req,res)=>{
 
 
 //UPDATE
-router.put("/:id",async (req,res)=>{
+router.put("/:id",verifyToken,async (req,res)=>{
     try{
         const updatedUser=await Post.findByIdAndUpdate(req.params.id,{$set:req.body},{new:true})
         res.status(200).json(updatedUser)
@@ -38,7 +39,7 @@ router.put("/:id",async (req,res)=>{
 
 
 //DELETE
-router.delete("/:id",async (req,res)=>{
+router.delete("/:id",verifyToken,async (req,res)=>{
     try{
         await Post.findByIdAndDelete(req.params.id)
         res.status(200).json("Post has been deleted!")
