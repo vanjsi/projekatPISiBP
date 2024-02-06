@@ -26,8 +26,8 @@ router.post("/create",verifyToken, async (req,res)=>{
 //UPDATE
 router.put("/:id",verifyToken,async (req,res)=>{
     try{
-        const updatedUser=await Post.findByIdAndUpdate(req.params.id,{$set:req.body},{new:true})
-        res.status(200).json(updatedUser)
+        const updatedPost=await Post.findByIdAndUpdate(req.params.id,{$set:req.body},{new:true})
+        res.status(200).json(updatedPost)
 
     }
     catch(err){
@@ -42,6 +42,7 @@ router.put("/:id",verifyToken,async (req,res)=>{
 router.delete("/:id",verifyToken,async (req,res)=>{
     try{
         await Post.findByIdAndDelete(req.params.id)
+        await Comment.deleteMany({postId:req.params.id})
         res.status(200).json("Post has been deleted!")
 
     }
