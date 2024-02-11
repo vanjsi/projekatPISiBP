@@ -1,4 +1,7 @@
 import { Link } from "react-router-dom"
+import { CiInstagram } from "react-icons/ci";
+import { FaFacebook, FaYoutube  } from "react-icons/fa";
+
 
 const Footer = () => {
     return(
@@ -8,10 +11,6 @@ const Footer = () => {
             <p></p>
         </div>
         <div className="flex flex-col text-black font-bold hover:text-white">
-            <p>Najnovije vesti</p>
-            <p>Najcitanije vesti</p>
-        </div>
-        <div className="flex flex-col text-black font-bold hover:text-white">
             <p><Link to="/termsofuse">Pravila koriscenja</Link></p>
             <p><Link to="/privacypolicy">Politika privatnosti</Link></p>
         </div>
@@ -19,6 +18,13 @@ const Footer = () => {
             <p><Link to="/aboutus">O nama</Link></p>
             <p><Link to="/contact">Kontakt</Link></p>
         </div>
+        <div className="flex justify-center items-center flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2">
+                <div className="flex justify-center items-center space-x-2">
+                    <a href="https://www.facebook.com/?locale=sr_RS"><FaFacebook size={24} color="#000" /></a>
+                    <a href="https://www.instagram.com/"><CiInstagram size={24} color="#000" /></a>
+                    <a href="https://www.youtube.com/"><FaYoutube size={24} color="#000" /></a>
+                </div>
+            </div>
       </div>
       <p className="py-2 pb-6 text-center text-black font-bold bg-gray-400 text-sm">Srbija  |  @eNovine 2024</p>
       </>

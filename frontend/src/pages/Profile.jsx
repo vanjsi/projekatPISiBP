@@ -83,7 +83,7 @@ const Profile = () => {
     return(
         <div>
             <Navbar/>
-            <div className="px-8 md:px-[200px] mt-8 flex md:flex-row flex-col-reverse md:items-start items-start">
+            <div className="px-8 py-40 md:px-[200px] bg-pink-100 mt-8 flex md:flex-row flex-col-reverse md:items-start items-start">
                 <div className="flex flex-col md:w-[70%] w-full mt-8 md:mt-0">
                     <h1 className="text-xl text-pink-700 font-bold mb-4">Tvoje objave:</h1>
                     {posts?.map((p)=>{

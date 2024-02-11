@@ -42,7 +42,7 @@ const Register = () => {
                 <input onChange={(e)=>setUsername(e.target.value)} className="w-full px-4 py-2 border-2 border-pink-700 outline-0" type="text" placeholder="Unesi svoje korisnicko ime" />
                 <input onChange={(e)=>setEmail(e.target.value)} className="w-full px-4 py-2 border-2 border-pink-700 outline-0" type="text" placeholder="Unesi svoj email" />
                 <input onChange={(e)=>setPassword(e.target.value)} className="w-full px-4 py-2 border-2 border-pink-700 outline-0" type="password" placeholder="Unesi svoju sifru" />
-                <button onClick={handleRegister} className="w-full px-4 py-4 text-lg font-bold text-white bg-pink-500 rounded-lg hover:bg-gray-500 hover:text-pink-700">Registruj se</button>
+                <button onClick={handleRegister} className="w-full px-4 py-4 text-lg font-bold text-white bg-pink-500 rounded-lg hover:bg-gray-400 hover:text-pink-700">Registruj se</button>
                 {error && <h3 className="text-black font-bold text-md">Proverite email ili sifru</h3>}
                 <div className="flex justify-center italic items-center space-x-3">
                     <p>Vec imate nalog?</p>
