@@ -20,9 +20,9 @@ const Footer = () => {
         </div>
         <div className="flex justify-center items-center flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2">
                 <div className="flex justify-center items-center space-x-2">
-                    <a href="https://www.facebook.com/?locale=sr_RS"><FaFacebook size={24} color="#000" /></a>
-                    <a href="https://www.instagram.com/"><CiInstagram size={24} color="#000" /></a>
-                    <a href="https://www.youtube.com/"><FaYoutube size={24} color="#000" /></a>
+                    <a href=""><FaFacebook size={24} color="#000" /></a>
+                    <a href=""><CiInstagram size={24} color="#000" /></a>
+                    <a href=""><FaYoutube size={24} color="#000" /></a>
                 </div>
             </div>
       </div>

@@ -6,7 +6,6 @@ const Post=require("../models/Post")
 const Comment=require("../models/Comment")
 const verifyToken = require("../verifyToken")
 
-
 //CREATE
 router.post("/create",verifyToken, async (req,res)=>{
     try{
@@ -20,8 +19,6 @@ router.post("/create",verifyToken, async (req,res)=>{
 
     }
 })
-
-
 
 //UPDATE
 router.put("/:id",verifyToken, async (req,res)=>{
@@ -37,7 +34,6 @@ router.put("/:id",verifyToken, async (req,res)=>{
 
 })
 
-
 //DELETE
 router.delete("/:id",verifyToken,async (req,res)=>{
     try{
@@ -52,7 +48,35 @@ router.delete("/:id",verifyToken,async (req,res)=>{
 
 })
 
+//LIKE COMMENT
+router.post("/:id/like", verifyToken, async (req, res) => {
+    try {
+        const comment = await Comment.findById(req.params.id);
+        if (!comment) return res.status(404).json({ message: "Comment not found" });
 
+        comment.likes++;
+        const updatedComment = await comment.save();
+
+        res.status(200).json(updatedComment);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+//DISLIKE COMMENT
+router.post("/:id/dislike", verifyToken, async (req, res) => {
+    try {
+        const comment = await Comment.findById(req.params.id);
+        if (!comment) return res.status(404).json({ message: "Comment not found" });
+
+        comment.dislikes++;
+        const updatedComment = await comment.save();
+
+        res.status(200).json(updatedComment);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
 
 //GET UPOST COMMENT
 router.get("/post/:postId",async (req,res)=>{
@@ -66,6 +90,5 @@ router.get("/post/:postId",async (req,res)=>{
     }
 
 })
-
 
 module.exports=router
