@@ -1,21 +1,11 @@
 import axios from "axios";
-import { BiEdit } from "react-icons/bi";
-import { MdDelete, MdThumbUp, MdThumbDown } from "react-icons/md"; // Dodali smo ikone za like i dislike
+import { MdThumbUp, MdThumbDown } from "react-icons/md";
 import { URL } from "../url";
 import { useContext } from "react";
 import { UserContext } from "../context/UserContext";
 
-const Comment = ({ c, post }) => {
+const Comment = ({ c }) => {
     const { user } = useContext(UserContext);
-
-    const deleteComment = async (id) => {
-        try {
-            await axios.delete(URL + "/api/comments/" + id, { withCredentials: true });
-            window.location.reload(true);
-        } catch (err) {
-            console.log(err);
-        }
-    };
 
     const likeComment = async (id) => {
         try {
@@ -42,13 +32,10 @@ const Comment = ({ c, post }) => {
                 <div className="flex justify-center items-center space-x-4"></div>
                 <p>{new Date(c.updatedAt).toString().slice(0, 15)}</p>
                 <p>{new Date(c.updatedAt).toString().slice(16, 24)}</p>
-                {user?._id === c?.userId ? (
-                    <div className="flex items-center justify-center space-x-2">
-                        <p className="cursor-pointer" onClick={() => deleteComment(c._id)}><MdDelete /></p>
-                        <p className="cursor-pointer" onClick={() => likeComment(c._id)}><MdThumbUp /></p>
-                        <p className="cursor-pointer" onClick={() => dislikeComment(c._id)}><MdThumbDown /></p>
-                    </div>
-                ) : ""}
+                <div className="flex items-center justify-center space-x-2">
+                    <p className="cursor-pointer" onClick={() => likeComment(c._id)}><MdThumbUp /></p>
+                    <p className="cursor-pointer" onClick={() => dislikeComment(c._id)}><MdThumbDown /></p>
+                </div>
             </div>
             <p className="px-4 mt-2">{c.comment}</p>
             <div className="flex items-center justify-between mt-2">

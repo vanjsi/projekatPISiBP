@@ -28,8 +28,7 @@ const Menu=()=>{
             {!user &&<h3 className="text-black text-sm hover:text-gray-500 cursor-pointer"><Link to="/login">Uloguj se</Link></h3>}
             {!user &&<h3 className="text-black text-sm hover:text-gray-500 cursor-pointer"><Link to="/register">Registruj se</Link></h3>}
             {user &&<h3 className="text-black text-sm hover:text-gray-500 cursor-pointer"><Link to={"/profile/"+user._id}>Profil</Link></h3>}
-            {user &&<h3 className="text-black text-sm hover:text-gray-500 cursor-pointer"><Link to="/write">Napisi</Link></h3>}
-            {user &&<h3 className="text-black text-sm hover:text-gray-500 cursor-pointer"><Link to={"/mynews/"+user._id}>Moje vesti</Link></h3>}
+            {user &&<h3 className="text-black text-sm hover:text-gray-500 cursor-pointer"><Link to="/write">Napisi</Link></h3>} 
             {user &&<h3 onClick={handleLogout} className="text-black text-sm hover:text-gray-500 cursor-pointer">Odjavi se</h3>}
 
         </div>
